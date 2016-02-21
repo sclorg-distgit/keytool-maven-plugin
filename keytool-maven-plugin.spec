@@ -4,7 +4,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.0
-Release:          13.13%{?dist}
+Release:          13.14%{?dist}
 Summary:          A plugin that wraps the keytool program and allows to manipulate keystores
 License:          MIT and ASL 2.0
 # http://mojo.codehaus.org/keytool-maven-plugin/
@@ -18,7 +18,7 @@ BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
 BuildRequires:    %{?scl_prefix_java_common}maven-local
-BuildRequires:    maven30-maven-surefire-provider-junit
+BuildRequires:    %{?scl_prefix}maven-surefire-provider-junit
 
 %description
 A plugin that wraps the keytool program bundled with Sun's Java SDK.
@@ -33,7 +33,7 @@ This package contains the API documentation for %{pkg_name}.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 
 # fixing licenses
@@ -44,13 +44,13 @@ cp %{SOURCE1} LICENSE-ASL
 %{?scl:EOF}
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_build
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 %mvn_install
 %{?scl:EOF}
@@ -64,6 +64,9 @@ set -e -x
 %doc LICENSE-MIT LICENSE-ASL
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-13.14
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 1.0-13.13
 - maven33 rebuild
 
