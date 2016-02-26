@@ -4,7 +4,7 @@
 
 Name:             %{?scl_prefix}%{pkg_name}
 Version:          1.0
-Release:          13.14%{?dist}
+Release:          13.15%{?dist}
 Summary:          A plugin that wraps the keytool program and allows to manipulate keystores
 License:          MIT and ASL 2.0
 # http://mojo.codehaus.org/keytool-maven-plugin/
@@ -17,7 +17,7 @@ Source1:          LICENSE-ASL
 BuildArch:        noarch
 
 BuildRequires:    %{?scl_prefix_java_common}javapackages-tools
-BuildRequires:    %{?scl_prefix_java_common}maven-local
+BuildRequires:    %{?scl_prefix}maven-local
 BuildRequires:    %{?scl_prefix}maven-surefire-provider-junit
 
 %description
@@ -64,6 +64,9 @@ set -e -x
 %doc LICENSE-MIT LICENSE-ASL
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.0-13.15
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 1.0-13.14
 - maven33 rebuild #2
 
